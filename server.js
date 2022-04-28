@@ -6,7 +6,6 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 const { v4: uuidv4 } = require('uuid');
 app.listen(PORT,()=>{console.log("http://localhost:"+PORT)});
-
-
+app.use(express.static("./public"));
 let questions = require("./routes/question_route")
 app.use("/questions",questions);
