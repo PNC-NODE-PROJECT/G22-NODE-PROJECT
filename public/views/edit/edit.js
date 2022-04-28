@@ -61,28 +61,33 @@ function refrest_Dom(){
                 answer_d.appendChild(choiceD);
                 // check correct answer========
                 if (question.correct=="A"){
-                    answer_a.style.color='rgb(136, 223, 5)';
+                    answer_a.style.color='#55a630';
+                    answer_a.style.fontWeight = "bold";
                     let img = document.createElement('img');
                     img.src = "../../images/correct.jpg";
                     img.style.width = "7%";
                     answer_a.appendChild(img);
                   }
                   else if (question.correct=="B"){
-                    answer_b.style.color='rgb(136, 223, 5)';
+                    answer_b.style.color='#55a630';
+                    answer_b.style.fontWeight = "bold";
                     let img = document.createElement('img');
                     img.src = "../../images/correct.jpg";
                     img.style.width = "7%";
                     answer_b.appendChild(img);
                   }
                   else if (question.correct=="C"){
-                    answer_c.style.color='rgb(136, 223, 5)';
+                    answer_c.style.color='#55a630';
+                    answer_c.style.fontWeight = "bold";
+                    answer_c.style.textDecoration = "bol"
                     let img = document.createElement('img');
                     img.src = "../../images/correct.jpg";
                     img.style.width = "7%";
                     answer_c.appendChild(img);
                   }
                   else if (question.correct=="D"){
-                    answer_d.style.color='rgb(136, 223, 5)';
+                    answer_d.style.color='#55a630';
+                    answer_d.style.fontWeight = "bold";
                     let img = document.createElement('img');
                     img.src = "../../images/correct.jpg";
                     img.style.width = "7%";
@@ -116,7 +121,6 @@ function refrest_Dom(){
         }
     })
 }
-
 
 function deleteQuestion(e){
     if (e.target.className==="delete_btn btn-danger"){

@@ -4,6 +4,16 @@
     --main-color-light: rgb(185, 185, 185);
     --grey-color: #b6b6b6;
   }
+  .nav{
+    width: 110%;
+    display: flex;
+    justify-content: space-between;
+    background-color:#5c4d7dde;
+    padding: 10px;
+  }
+  .nav .btn{
+    text-decoration: underline;
+  }
 /* body{
     margin: 0;
     padding: 0;
@@ -26,6 +36,9 @@
     background-color: blue;
 
 }  */
+.card, .question{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;  
+}
 
 /* ---------------------------style of dialog-------------------------- */
 
