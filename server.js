@@ -9,9 +9,6 @@ app.listen(PORT,()=>{console.log("http://localhost:"+PORT)});
 let PATH = "./data/questions.json";
 let questions = JSON.parse(fs.readFileSync(PATH));
 
-app.get("/questions",(req,res)=>{
-    res.send(questions);
-})
 
 app.post('/questions',(req,res)=>{
     let new_question = {
