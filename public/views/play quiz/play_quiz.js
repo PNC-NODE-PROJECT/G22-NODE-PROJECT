@@ -15,6 +15,7 @@ const dom_score_img = document.getElementById("score_img");
 
 
 let currentQuestionIndex = 0;
+let score = 0;
 
 
 
@@ -49,8 +50,21 @@ function renderQuestion() {
 }
 
 function checkAnswer(choice) {
-  currentQuestionIndex+=1;
-  console.log(currentQuestionIndex);
+  axios.get("http://localhost/questions").then(function(response) {
+    var questions=response.data;
+    if(currentQuestionIndex<=questions.length-1){
+      if(choice===questions[currentQuestionIndex].correct){
+        console.log(questions[currentQuestionIndex].correct);
+        score+=1;
+        console.log(score);
+      }
+      currentQuestionIndex+=1;
+    }
+    if(currentQuestionIndex===questions.length){
+      hide(dom_quiz);
+    }
+  })
+  // console.log(choice)
   renderQuestion();
 }
 
