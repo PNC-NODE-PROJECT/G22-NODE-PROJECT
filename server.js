@@ -9,6 +9,9 @@ app.use(cors({
     origin:"*"
 }))
 const { v4: uuidv4 } = require('uuid');
+app.use(cors({
+    origin:"*"
+}))
 app.listen(PORT,()=>{console.log("http://localhost:"+PORT)});
 app.use(express.static("./public"));
 let questions = require("./routes/question_route")

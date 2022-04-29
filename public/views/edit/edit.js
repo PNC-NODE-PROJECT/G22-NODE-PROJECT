@@ -135,7 +135,7 @@ function deleteQuestion(e){
 
 // FUNTION ADD NEW QUESTION ==========================================
 
-function onAddQuestion(){  
+function onAddQuestion(e){  
     createEditButton.textContent="ADD";
     questions_dialog.style.display = "block";
 
@@ -204,8 +204,7 @@ function onCreate(){
             choiceC: choiceC.value,
             choiceD: choiceD.value,
             correct: corect_answer.value
-        }
-        
+        }       
         axios.put(myURL+"/questions/"+id,new_question);
         questions_dialog.style.display = "none";
         refrest_Dom();
