@@ -10,14 +10,12 @@ const dom_choiceC = document.getElementById("C");
 const dom_choiceD = document.getElementById("D");
 
 const dom_score = document.getElementById("score");
-const dom_score_p = document.getElementById("score_p");
-const dom_score_img = document.getElementById("score_img");
+let message = document.querySelector('.message');
+const dom_card = document.querySelector(".main-card");
 
 
 let currentQuestionIndex = 0;
 let score = 0;
-
-
 
 function hide(element) {
     element.style.display = "none";
@@ -62,9 +60,17 @@ function checkAnswer(choice) {
     }
     if(currentQuestionIndex===questions.length){
       hide(dom_quiz);
+      show(dom_card);
+      dom_score.textContent=parseInt(score/questions.length*100)+"%";
+      console.log(dom_score);
+      if(parseInt(score/questions.length*100) == 50){
+        message.textContent = "You get a goot score.But try to be more"
+      }else if(parseInt(score/questions.length*100) < 50){
+        message.textContent = "You need to review your lesson again!"
+      }
     }
   })
-  // console.log(choice)
+  
   renderQuestion();
 }
-
+renderQuestion();

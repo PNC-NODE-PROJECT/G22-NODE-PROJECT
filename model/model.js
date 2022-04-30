@@ -56,15 +56,14 @@ function Updat_Questions(id,body) {
     questions[index].choiceA =body.choiceA;
     questions[index].choiceB =body.choiceB;
     questions[index].choiceC =body.choiceC;
-    questions[index].choiceD =body.choiceD;
+    questions[index].choiceD =body.choiceD; 
     questions[index].correct =body.correct;
     let data = JSON.stringify(questions);
     write_file(PATH,data)
 }
-
-
+// export all function ==========================================================
 module.exports.GetAllQuestions = GetAllQuestions;
-module.exports.Get_One_Questions =Get_One_Questions;
+module.exports.Get_One_Questions = Get_One_Questions;
 module.exports.delete_One_Question = delete_One_Question;
 module.exports.create_Question = create_Question;
 module.exports.Updat_Questions =  Updat_Questions;

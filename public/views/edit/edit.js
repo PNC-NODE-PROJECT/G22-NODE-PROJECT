@@ -1,7 +1,4 @@
 
-
-
-
 let myURL = "http://localhost";
 
 function refrest_Dom(){  
@@ -11,7 +8,6 @@ function refrest_Dom(){
         if(questions !== "No questions yet !!"){
             let list_of_question = document.querySelector(".questionsList");
             list_of_question.remove();
-            
             console.log(list_of_question);
             console.log(questions);
             let questionsList = document.createElement('div');
@@ -161,11 +157,6 @@ function editQuestion(e){
     axios.get(myURL+"/questions/"+id).then((response)=>{
         console.log(response.data);
         let question = response.data;
-        console.log(question.title);
-        console.log(question.choiceA);
-        console.log(question.choiceB);
-        console.log(question.choiceC);
-        console.log(question.choiceD);
         document.querySelector("#title").value=question.title;
         document.querySelector("#choiceA").value = question.choiceA;
         document.querySelector("#choiceB").value = question.choiceB;
@@ -213,18 +204,16 @@ function onCreate(){
             choiceC: choiceC.value,
             choiceD: choiceD.value,
             correct: corect_answer.value
-        }
+        }       
         axios.put(myURL+"/questions/"+id,new_question);
         questions_dialog.style.display = "none";
         refrest_Dom();
     }
 }
 
-
 // -----------------------main code ------------------------------
 let id = null ;
 let questions_dialog = document.querySelector('#questions-dialog');
 document.addEventListener("click",deleteQuestion);
-
 
 refrest_Dom();
