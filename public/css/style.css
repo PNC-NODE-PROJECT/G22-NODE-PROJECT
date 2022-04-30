@@ -9,11 +9,74 @@
     padding: 0;
     height: 90vh;
     font-family: sans-serif;
-    background-image: url(../images/background.jpg);
+    /* background-image: url(../images/background.jpg);
     background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size:100%;
-    
+    background-attachment: fixed; 
+     background-size:100%;  */
+    background: #b6b6b6;
+}
+.container{
+  border-top:5px solid #5c4d7d;
+}
+.main-contain{
+  width: 50%;
+  margin: auto;
+  margin-top: 40px;
+}
+.menu{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  
+}
+.card-1, .card-2{
+  width: 50%;
+  height: 60vh;
+  background-color:rgba(255, 255, 255, 0.696);
+  margin: 10px;
+  border-radius: 20px;
+  border-left:5px solid #5c4d7d;
+  border-right:5px solid #5c4d7d;
+}
+.card-1 img{
+  width: 60%;
+  margin-left: 18%;
+  margin-top:30%;
+}
+.card-2 h1{
+  text-align: center;
+  margin-top: 50%;
+  font-weight: bold;
+  color: #2d185ae6;
+  width: 70%;
+  height: 10vh;
+  margin-left:18% ;
+  border-left: 2px solid #5c4d7d;
+  border-right: 2px solid #5c4d7d;
+  border-top: 2px solid #5c4d7d;
+  border-bottom: 2px solid #5c4d7d;
+  
+}
+.button{
+  width:80%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+.play-btn,.edit-btn{
+  border-radius: 10px;
+  padding: 10px;
+  border: none;
+  width: 200px;
+  background-color:#7400b8;
+  color: #fff;
+  font-weight: bold;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.play-btn:hover,.edit-btn:hover{
+  border: 1px solid #000;
+  background-color: #5c4d7d00;
+  color: #000;
 }
 .nav{
   position: fixed;
@@ -54,6 +117,7 @@
   }
   
   dialog {
+    border-top: 5px solid #5c4d7d;
     position: fixed;
     top: 10vh;
     left: 20%;
@@ -121,7 +185,7 @@
 }
 
 #start {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.696);
   border-radius: 20px;
   padding: 20px;
   font-size: 300%;
@@ -131,7 +195,7 @@
 #quiz {
   width: 50%;
   max-width: 80%;
-  background-color: white;
+  background-color:rgba(255, 255, 255, 0.696);
   border-radius: 20px;
   padding: 10px;
 }
@@ -177,7 +241,7 @@
 }
 
 #start {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.696);
   border-radius: 20px;
   padding: 20px;
   font-size: 300%;
@@ -187,7 +251,7 @@
 #quiz {
   width: 50%;
   max-width: 80%;
-  background-color: white;
+  background-color:rgba(255, 255, 255, 0.696);
   border-radius: 20px;
   padding: 10px;
 }
@@ -207,7 +271,7 @@
 .main-card{
   width: 40%;
   height: 60vh;
-  background: white;
+  background: rgba(255, 255, 255, 0.696);
   border-radius: 10px;
   display: none;
   border-top: 5px solid #5c4d7d ;
