@@ -15,9 +15,9 @@
      background-size:100%;  */
     background: #b6b6b6;
 }
-.container{
+/* .container{
   border-top:5px solid #5c4d7d;
-}
+} */
 .main-contain{
   width: 50%;
   margin: auto;
@@ -117,7 +117,7 @@
   }
   
   dialog {
-    border-top: 5px solid #5c4d7d;
+    /* border-top: 5px solid #5c4d7d; */
     position: fixed;
     top: 10vh;
     left: 20%;

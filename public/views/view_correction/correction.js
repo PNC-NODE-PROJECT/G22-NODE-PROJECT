@@ -11,7 +11,6 @@ function refrest_Dom(){
             let questionsList = document.createElement('div');
             questionsList.className = "questionsList";
             for(let question of  questions){
-        
                 // card ============
                 let card = document.createElement('div');
                 card.className = "card w-50 p-3 m-auto mt-3";
@@ -94,42 +93,36 @@ function refrest_Dom(){
                     img.style.width = "8%";
                     answer_d.appendChild(img);
                   }
-                  
-                  for (let correct of corections){
-                    if (question.id=correct.id && correct.choice=="A"  && correct.choice !== question.correct){
+                  let index = corections.findIndex((correct)=>correct.id===question.id);
+                  console.log(corections[index].choice);
+                  if (corections[index].choice==="A" && corections[index].chioce !== question.correct){
                       answer_a.style.color="red";
                       let img = document.createElement('img');
-                      img.src = "../../images/wrong.png";
+                      img.src = "../../images/wrong.jpg";
                       img.style.width = "6%";
                       answer_a.appendChild(img);
-      
-                    }
-                    else if (question.id=correct.id && correct.choice=="B"&& correct.choice !== question.correct ){
+                  }
+                  else if (corections[index].choice==="B" && corections[index].chioce !== question.correct){
                       answer_b.style.color="red";
                       let img = document.createElement('img');
                       img.src = "../../images/wrong.jpg";
-                      img.style.width = "7%";
+                      img.style.width = "6%";
                       answer_b.appendChild(img);
-                    }
-                    else if (question.id=correct.id && correct.choice=="C"&& correct.choice !== question.correct ){
+                  }
+                  else if (corections[index].choice==="C" && corections[index].chioce !== question.correct){
                       answer_c.style.color="red";
                       let img = document.createElement('img');
                       img.src = "../../images/wrong.jpg";
-                      img.style.width = "7%";
+                      img.style.width = "6%";
                       answer_c.appendChild(img);
-                    }
-                    else if (question.id=correct.id && correct.choice=="D"&& correct.choice !== question.correct ){
+                  }
+                  else if (corections[index].choice==="D" && corections[index].chioce !== question.correct){
                       answer_d.style.color="red";
                       let img = document.createElement('img');
                       img.src = "../../images/wrong.jpg";
                       img.style.width = "6%";
-                      img.style.height = "6%";
                       answer_d.appendChild(img);
-                    }
                   }
-
-                
-                  
                 // APEND ELEMENT TO THE DOM ======================================
                 card.appendChild(questiontitle);
                 card_list.appendChild(answer_a);
