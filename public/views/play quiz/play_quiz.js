@@ -16,6 +16,7 @@ const dom_card = document.querySelector(".main-card");
 
 let currentQuestionIndex = 0;
 let score = 0;
+let corections=[];
 
 function hide(element) {
     element.style.display = "none";
@@ -50,6 +51,8 @@ function renderQuestion() {
 function checkAnswer(choice) {
   axios.get("http://localhost/questions").then(function(response) {
     var questions=response.data;
+    corections.push({id: questions[currentQuestionIndex].id,choice:choice});
+    localStorage.setItem("corections",JSON.stringify(corections));
     if(currentQuestionIndex<=questions.length-1){
       if(choice===questions[currentQuestionIndex].correct){
         console.log(questions[currentQuestionIndex].correct);
@@ -68,9 +71,13 @@ function checkAnswer(choice) {
       }else if(parseInt(score/questions.length*100) < 50){
         message.textContent = "You need to review your lesson again!"
       }
+    
     }
+    
   })
-  
+
+  // write choice to the file ===============================================================================
+
   renderQuestion();
 }
 renderQuestion();

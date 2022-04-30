@@ -210,9 +210,24 @@
   background: white;
   border-radius: 10px;
   display: none;
+  border-top: 5px solid #5c4d7d ;
 }
 .result{
   text-align: center;
   margin: 90px;
+}
+.message{
   font-weight: bold;
+  margin-top: 10px;
+}
+#view_score{
+  width:55%;
+  background: #5c4d7d;
+  border: none;
+  padding: 3px;
+  margin: 5px;
+  color: #f0e6fded;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-top: 15px;
 }

@@ -1,5 +1,6 @@
 const fs = require('fs');
 let PATH = "./data/questions.json";
+let CORRECTION_PATH="./data/correction.json";
 
 let read_file = (filename) =>JSON.parse(fs.readFileSync(filename));
 let write_file = (filename,data) =>fs.writeFileSync(filename,data);
@@ -61,9 +62,19 @@ function Updat_Questions(id,body) {
     let data = JSON.stringify(questions);
     write_file(PATH,data)
 }
+
+
+// MODELE USE FOR CORRECTION ===================================================
+
+
+
+
 // export all function ==========================================================
 module.exports.GetAllQuestions = GetAllQuestions;
 module.exports.Get_One_Questions = Get_One_Questions;
 module.exports.delete_One_Question = delete_One_Question;
 module.exports.create_Question = create_Question;
 module.exports.Updat_Questions =  Updat_Questions;
+
+
+
