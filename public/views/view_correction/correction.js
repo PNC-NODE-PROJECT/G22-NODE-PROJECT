@@ -5,6 +5,7 @@ function refrest_Dom(){
         let corections=JSON.parse(localStorage.getItem("corections"));
         console.log(corections);
         let questions = respont.data;
+        console.log(questions);
         if(questions !== "No questions yet !!"){
             let list_of_question = document.querySelector(".questionsList");
             list_of_question.remove();
@@ -128,8 +129,6 @@ function refrest_Dom(){
                     }
                   }
 
-                
-                  
                 // APEND ELEMENT TO THE DOM ======================================
                 card.appendChild(questiontitle);
                 card_list.appendChild(answer_a);

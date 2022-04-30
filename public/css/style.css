@@ -9,14 +9,7 @@
     padding: 0;
     height: 90vh;
     font-family: sans-serif;
-    /* background-image: url(../images/background.jpg);
-    background-repeat: no-repeat;
-    background-attachment: fixed; 
-     background-size:100%;  */
     background: #b6b6b6;
-}
-.container{
-  border-top:5px solid #5c4d7d;
 }
 .main-contain{
   width: 50%;
@@ -91,15 +84,6 @@
 .nav .btn{
   text-decoration: underline;
 }
-
-.choice{
-   height: 50%;
-    
-}
-.card{
-  height: 100%;
-}
-
 .card, .question{
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;  
 }
@@ -117,7 +101,6 @@
   }
   
   dialog {
-    border-top: 5px solid #5c4d7d;
     position: fixed;
     top: 10vh;
     left: 20%;
@@ -172,6 +155,7 @@
     border-color: var(--main-color-light);
   }
 
+/* --------------- PLAY VIEW    --------------------- ---------------   */
 
   #play-view {
   /* background-color: var(--main-color-light); */
@@ -227,46 +211,6 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 
 }
-/* --------------- PLAY VIEW    --------------------- ---------------   */
-
-#play-view {
-  /* background-color: var(--main-color-light); */
-
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-}
-
-#start {
-  background-color: rgba(255, 255, 255, 0.696);
-  border-radius: 20px;
-  padding: 20px;
-  font-size: 300%;
-  cursor: pointer;
-}
-
-#quiz {
-  width: 50%;
-  max-width: 80%;
-  background-color:rgba(255, 255, 255, 0.696);
-  border-radius: 20px;
-  padding: 10px;
-}
-
-#score {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#question {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 .main-card{
   width: 40%;
@@ -274,7 +218,7 @@
   background: rgba(255, 255, 255, 0.696);
   border-radius: 10px;
   display: none;
-  border-top: 5px solid #5c4d7d ;
+  
 }
 .result{
   text-align: center;

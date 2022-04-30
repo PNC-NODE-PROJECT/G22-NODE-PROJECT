@@ -1,4 +1,3 @@
-
 // get the dom from html================================================
 
 const dom_start = document.getElementById("start");
