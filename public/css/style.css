@@ -9,7 +9,11 @@
     padding: 0;
     height: 90vh;
     font-family: sans-serif;
-    background: #b6b6b6;
+    /* background-image: url(../images/background.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+     background-size:100%;  */
+    background: #b6b6b6 !important;
 }
 /* .container{
   border-top:5px solid #5c4d7d;
@@ -74,6 +78,11 @@
   background-color: #5c4d7d00;
   color: #000;
 }
+.nav .btn:hover{
+  border: 1px solid #000;
+  background:none !important;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
 .nav{
   position: fixed;
   top: 0;
@@ -81,7 +90,7 @@
   z-index: 1;
   display: flex;
   justify-content: space-between;
-  background-color:#5c4d7dde;
+  background-color:#7400b8;
   padding: 10px;
 }
 .nav .btn{
@@ -173,19 +182,24 @@
 }
 
 #start {
+  border:2px solid #7400b8;
   background-color: rgba(255, 255, 255, 0.696);
   border-radius: 20px;
   padding: 20px;
   font-size: 300%;
   cursor: pointer;
 }
-
+#start:hover{
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
 #quiz {
   width: 50%;
   max-width: 80%;
   background-color:rgba(255, 255, 255, 0.696);
   border-radius: 20px;
   padding: 10px;
+  border: 2px solid #7400b8;
+  border-top: 5px solid #7400b8;
 }
 
 #score {
@@ -199,6 +213,14 @@
   justify-content: center;
   align-items: center;
 }
+.question {
+  margin-top:200px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #7400b8 !important;
+  color: #fff !important;
+}
 
 #choices {
   display: grid;
@@ -206,6 +228,8 @@
   margin: 20px 0;
   justify-content: center;
   align-items: center;
+  
+ 
 }
 
 #A,#B,#C,#D{
@@ -213,6 +237,15 @@
   margin: 10px;
   border:none;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  width:300px !important;
+  border:1px solid #7400b8;
+  border-radius:20px;
+
+}
+#A:hover,#B:hover,#C:hover,#D:hover{
+  background-color:#7400b8 ;
+  border:1px solid #000;
+  color: #fff;
 
 }
 
