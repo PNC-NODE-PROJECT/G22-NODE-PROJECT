@@ -1,15 +1,13 @@
 
-let myURL = "http://localhost";
 
 function refrest_Dom(){  
     let container = document.querySelector('.container');
-    axios.get(myURL+ "/questions").then(function(respont){
+
+    axios.get("/questions").then(function(respont){
         let questions = respont.data;
         if(questions !== "No questions yet !!"){
             let list_of_question = document.querySelector(".questionsList");
             list_of_question.remove();
-            console.log(list_of_question);
-            console.log(questions);
             let questionsList = document.createElement('div');
             questionsList.className = "questionsList";
             for(let question of  questions){
@@ -56,46 +54,30 @@ function refrest_Dom(){
                 let choiceD = document.createElement('p');
                 choiceD.textContent = question.choiceD;
                 answer_d.appendChild(choiceD);
-                // check correct answer=========================================
-
+               
                 // IF CORRECT ANSWER IS A-------------------------
-
+                let goodDomAnswer =null;
                 if (question.correct=="A"){
-                    answer_a.style.color='#55a630';
-                    answer_a.style.fontWeight = "bold";
-                    let img = document.createElement('img');
-                    img.src = "../../images/correct.jpg";
-                    img.style.width = "7%";
-                    answer_a.appendChild(img);
-                  }
-                  // IF CORRECT ANSWER IS B-------------------------
-                  else if (question.correct=="B"){
-                    answer_b.style.color='#55a630';
-                    answer_b.style.fontWeight = "bold";
-                    let img = document.createElement('img');
-                    img.src = "../../images/correct.jpg";
-                    img.style.width = "7%";
-                    answer_b.appendChild(img);
-                  }
-                  // IF CORRECT ANSWER IS C-------------------------
-                  else if (question.correct=="C"){
-                    answer_c.style.color='#55a630';
-                    answer_c.style.fontWeight = "bold";
-                    answer_c.style.textDecoration = "bol"
-                    let img = document.createElement('img');
-                    img.src = "../../images/correct.jpg";
-                    img.style.width = "7%";
-                    answer_c.appendChild(img);
-                  }
-                  // IF CORRECT ANSWER IS D-------------------------
-                  else if (question.correct=="D"){
-                    answer_d.style.color='#55a630';
-                    answer_d.style.fontWeight = "bold";
-                    let img = document.createElement('img');
-                    img.src = "../../images/correct.jpg";
-                    img.style.width = "7%";
-                    answer_d.appendChild(img);
-                  }
+                    goodDomAnswer = answer_a;
+                }
+                else if (question.correct=="B"){
+                    goodDomAnswer = answer_b;
+                }
+                else if (question.correct=="C"){
+                    goodDomAnswer = answer_c;
+                }
+                else {
+                    goodDomAnswer = answer_d;
+                }
+
+                goodDomAnswer.style.color='#55a630';
+                goodDomAnswer.style.fontWeight = "bold";
+                let img = document.createElement('img');
+                img.src = "../../images/correct.jpg";
+                img.style.width = "7%";
+                goodDomAnswer.appendChild(img);
+
+ 
                 // btn delete and btn edit===================================
                 let btn = document.createElement('div');
                 btn.className = "btn w-100 d-flex justify-content-end";
@@ -103,10 +85,20 @@ function refrest_Dom(){
                 let edit_tbn = document.createElement('button');
                 edit_tbn.className = "edit_btn btn-success me-2";
                 edit_tbn.textContent = "Edit";
-                edit_tbn.addEventListener('click', editQuestion);
+                edit_tbn.addEventListener('click', () => { 
+                    onEditQuestion(question.id);
+                });
+
+
                 let delete_btn = document.createElement('button');
                 delete_btn.className = "delete_btn btn-danger";
                 delete_btn.textContent = "delete";
+                delete_btn.addEventListener('click', () => { 
+                    onDeleteQuestion(question.id);
+                });
+
+
+
                 // APEND ELEMENT TO THE DOM ======================================
                 card.appendChild(questiontitle);
                 card_list.appendChild(answer_a);
@@ -123,39 +115,67 @@ function refrest_Dom(){
         }
     })
 }
+
+// function show =======================================================
+
+function show(element){
+    element.style.display="block";
+}
+
+// function hide =======================================================
+
+function hide(element){
+    element.style.display="none";
+}
+
 // FUNTION DELETE QUESTION ============================================
 
-function deleteQuestion(e){
-    if (e.target.className==="delete_btn btn-danger"){
-        id = e.target.parentElement.parentElement.id;
-        axios.delete(myURL + "/questions/"+id);
-        refrest_Dom();
-    }
+function onDeleteQuestion(id){
+        axios.delete("/questions/"+id)
+        .then( res=> refrest_Dom());
 }
 
 // FUNTION ADD NEW QUESTION ==========================================
 
 function onAddQuestion(e){  
-    createEditButton.textContent="ADD";
-    questions_dialog.style.display = "block";
+    edit_mode = "Edite";
+    showEditDialog();
+ 
 
 }
+
+function showEditDialog(){
+
+    // 1 - Update the button of the dialog
+    let createEditButton = document.querySelector("#createEditButton");
+    if (edit_mode === "Create") {
+        createEditButton.textContent="Edit";
+    }
+    else {
+        edit_mode = "Create"
+        createEditButton.textContent="Create";
+    }
+
+    // 2 - Show the dialog to create?edit auesiton
+    show( dom_dialog);
+}
+
+let edit_mode = "CREATE" // CREATE or EDIT
+ 
 
 // FUNCTION TO CONCELL ADD AN EDIT==================================
 
 function onCancel(){
-    questions_dialog.style.display = "none";
+   hide( dom_dialog );
 }
 
 // FUNCTION TO GET ELEMENT TO THE DOM =================================
 
-function editQuestion(e){
-    let createEditButton = document.querySelector("#createEditButton");
-    createEditButton.textContent="Edit";
-    id = e.target.parentElement.parentElement.id;
+function onEditQuestion(dom_id){
+    id=dom_id;
     console.log(id);
-    axios.get(myURL+"/questions/"+id).then((response)=>{
-        console.log(response.data);
+    showEditDialog();
+    axios.get("/questions/"+id).then((response)=>{
         let question = response.data;
         document.querySelector("#title").value=question.title;
         document.querySelector("#choiceA").value = question.choiceA;
@@ -163,12 +183,12 @@ function editQuestion(e){
         document.querySelector("#choiceC").value = question.choiceC;
         document.querySelector("#choiceD").value = question.choiceD;
     })
-    questions_dialog.style.display = "block";
 }
 
 // FUNCTION TO ADD AND EDIT QUESTION=================================
 
 function onCreate(){
+    
     // TO CREATE QUESTION ===========================================
     if (id==null){
         let title = document.getElementById('title');
@@ -185,9 +205,9 @@ function onCreate(){
             choiceD: choiceD.value,
             correct: corect_answer.value
         }
-        axios.post(myURL + "/questions", new_question);
-        questions_dialog.style.display = "none";
+        axios.post( "/questions", new_question);
         refrest_Dom();
+        hide(dom_dialog);
     }
     // TO EDIT QUESTION===================================================
     else{
@@ -205,15 +225,14 @@ function onCreate(){
             choiceD: choiceD.value,
             correct: corect_answer.value
         }       
-        axios.put(myURL+"/questions/"+id,new_question);
-        questions_dialog.style.display = "none";
+        axios.put("/questions/"+id,new_question);
+        hide( dom_dialog);
         refrest_Dom();
     }
 }
-
+let id = null;
+// Dialog dom======================================================
+let dom_dialog = document.getElementById("questions-dialog");
 // -----------------------main code ------------------------------
-let id = null ;
-let questions_dialog = document.querySelector('#questions-dialog');
-document.addEventListener("click",deleteQuestion);
-
+ 
 refrest_Dom();

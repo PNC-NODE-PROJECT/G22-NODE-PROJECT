@@ -29,17 +29,20 @@ function Get_One_Questions(id) {
         return("Id not found !!");
     }
 }
-// FUNTIONS DELETE ONE QUESTION ===============================================
-function delete_One_Question(id) {
+
+// Delete the question of given id
+// @param {id} the id of the question
+// @return null if sucess or the error message if failed
+function delete_question(id) {
     let index = questions.findIndex(questions => questions.id === id);
     if(index != -1){
         questions.splice(index, 1);
         let data = JSON.stringify(questions);
         write_file(PATH,data)
-        return({"message": "you have deleted"})
+        return null;
     }
     else{
-        return({"message": "Id not found"});
+        return "Cannot remove question of id " + id;
     }
 }
 // FUNTIONS CREATE QUESTION ===================================================
@@ -72,7 +75,7 @@ function Updat_Questions(id,body) {
 // export all function ==========================================================
 module.exports.GetAllQuestions = GetAllQuestions;
 module.exports.Get_One_Questions = Get_One_Questions;
-module.exports.delete_One_Question = delete_One_Question;
+module.exports.delete_question = delete_question;
 module.exports.create_Question = create_Question;
 module.exports.Updat_Questions =  Updat_Questions;
 
