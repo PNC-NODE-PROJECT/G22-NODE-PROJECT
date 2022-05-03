@@ -95,6 +95,8 @@
 }
 .nav .btn{
   text-decoration: underline;
+  font-weight: bold;
+  font-size: 15px;
 }
 .card, .question{
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;  
@@ -167,7 +169,9 @@
     outline: none;
     border-color: var(--main-color-light);
   }
-
+#choiceA,#choiceB,#choiceC,#choiceD,.corect{
+  margin-top: 5px;
+}
 /* --------------- PLAY VIEW    --------------------- ---------------   */
 
   #play-view {
@@ -275,4 +279,10 @@
   font-weight: bold;
   border-radius: 5px;
   margin-top: 15px;
+}
+.footer{
+  width: 100%;
+  text-align: center;
+  background-color: red;
+  padding: 15px;
 }

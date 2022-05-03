@@ -65,10 +65,12 @@ function checkAnswer(choice) {
       show(dom_card);
       dom_score.textContent=parseInt(score/questions.length*100)+"%";
       console.log(dom_score);
-      if(parseInt(score/questions.length*100) == 50){
-        message.textContent = "You get a goot score.But try to be more"
+      if(parseInt(score/questions.length*100) == 50 || parseInt(score/questions.length*100) == 60 ){
+        message.textContent = "You get a goot score.But try to be more";
       }else if(parseInt(score/questions.length*100) < 50){
-        message.textContent = "You need to review your lesson again!"
+        message.textContent = "You need to review your lesson again!";
+      }else if(parseInt(score/questions.length*100) >= 70 && parseInt(score/questions.length*100) <= 90){
+        message.textContent = "You get a very good score";
       }
     
     }

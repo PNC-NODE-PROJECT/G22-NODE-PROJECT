@@ -167,6 +167,7 @@ let edit_mode = "CREATE" // CREATE or EDIT
 
 function onCancel(){
    hide( dom_dialog );
+   hide(message_dialog);
 }
 
 // FUNCTION TO GET ELEMENT TO THE DOM =================================
@@ -197,17 +198,55 @@ function onCreate(){
         let choiceC = document.getElementById('choiceC');
         let choiceD = document.getElementById('choiceD');
         let corect_answer = document.querySelector('.corect');
-        let new_question = {
-            title: title.value,
-            choiceA: choiceA.value,
-            choiceB: choiceB.value,
-            choiceC: choiceC.value,
-            choiceD: choiceD.value,
-            correct: corect_answer.value
+        if(title.value !== "" && choiceA.value !=="" && choiceB.value !== "" && choiceC.value !== "" && choiceD.value !== ""){
+            let new_question = {
+                title: title.value,
+                choiceA: choiceA.value,
+                choiceB: choiceB.value,
+                choiceC: choiceC.value,
+                choiceD: choiceD.value,
+                correct: corect_answer.value
+            }
+            axios.post( "/questions", new_question);
+            refrest_Dom();
+            hide(dom_dialog);
+            hide(message_dialog)
+        }else{
+            if(title.value == ""){
+                title.style.border = 1 + "px solid red";
+            }else{
+                title.style.border = 1 + "px solid black";
+            }
+            if(choiceA.value == ""){
+
+                choiceA.style.border = 1 + "px solid red";
+            }else{
+
+                choiceA.style.border = 1 + "px solid black";
+            }
+            if(choiceB.value == ""){
+
+                choiceB.style.border = 1 + "px solid red";
+            }else{
+
+                choiceB.style.border = 1 + "px solid black";
+            }
+            if(choiceC.value == ""){
+
+                choiceC.style.border = 1 + "px solid red";
+            }else{
+
+                choiceC.style.border = 1 + "px solid black";
+                
+            }
+            if(choiceD.value == ""){
+
+                choiceD.style.border = 1 + "px solid red";
+            }else{
+
+                choiceD.style.border = 1 + "px solid black"
+            }
         }
-        axios.post( "/questions", new_question);
-        refrest_Dom();
-        hide(dom_dialog);
     }
     // TO EDIT QUESTION===================================================
     else{
@@ -233,6 +272,7 @@ function onCreate(){
 let id = null;
 // Dialog dom======================================================
 let dom_dialog = document.getElementById("questions-dialog");
+let message_dialog = document.getElementById("message-dialog");
 // -----------------------main code ------------------------------
  
 refrest_Dom();

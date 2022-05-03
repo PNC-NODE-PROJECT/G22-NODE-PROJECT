@@ -13,19 +13,27 @@
   </style>
 </head>
 <body>
+  
     <div class="container">
         <div id="questions-dialog" style="display: none">
             <dialog open>
-              <header>Create new question</header>
+              <header style="color: black;">Create new question</header>
       
               <section>
                 <label>Title</label>
-                <input id="title" type="text" placeholder="Question title" />
+
+                <input id="title" type="text" placeholder="Question title" required />
+
                 <label>Answers</label>
-                <input id="choiceA" type="text" placeholder="Answer A" /> 
-                <input id="choiceB" type="text" placeholder="Answer B" />
-                <input id="choiceC" type="text" placeholder="Answer C" />
-                <input id="choiceD" type="text" placeholder="Answer D" />
+
+                <input id="choiceA" type="text" placeholder="Answer A" required /> 
+
+                <input id="choiceB" type="text" placeholder="Answer B" required/>
+
+                <input id="choiceC" type="text" placeholder="Answer C"required />
+
+                <input id="choiceD" type="text" placeholder="Answer D"  required/>
+                
                 <select class="corect">
                   <option value="A">AnswerA</option>
                   <option value="B">AnswerB</option>
@@ -55,6 +63,13 @@
     <div class="nav">
       <button onclick="onAddQuestion()" class="btn btn-add" style="background-color:#6701a1;color: #fff; ;">ADD QUESTION</button>
       <a href="../../index.html"><button class="btn btn-add" style="background-color:#6701a1;color: #fff; ;">BACK</button></a>
+    </div>
+    <div id="message-dialog" style="display: none;">
+      <dialog open>
+        <section>
+         <p style="color: red;">you need to fill all !!</p>
+        </section>
+      </dialog>
     </div>
 </body>
 <script src="edit.js"></script>

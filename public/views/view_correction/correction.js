@@ -8,7 +8,6 @@ function refrest_Dom(){
         let corections=JSON.parse(localStorage.getItem("corections"));
         console.log(corections);
         let questions = respont.data;
-        console.log(questions);
         if(questions !== "No questions yet !!"){
             let list_of_question = document.querySelector(".questionsList");
             list_of_question.remove();
@@ -68,97 +67,50 @@ function refrest_Dom(){
 
                 // check correct answer===================================================
               
-                // IF CORRECT ANSWER IS A-------------------------------------------------
-
+                // IF CORRECT ANSWER IS A-------------------------
+                let goodDomAnswer =null;
                 if (question.correct=="A"){
-                    answer_a.style.color='#55a630';
-                    answer_a.style.fontWeight = "bold";
-                    let img = document.createElement('img');
-                    img.src = "../../images/correct.jpg";
-                    img.style.width = "8%";
-                    answer_a.appendChild(img);
-                  }
+                    goodDomAnswer = answer_a;
+                }
+                else if (question.correct=="B"){
+                    goodDomAnswer = answer_b;
+                }
+                else if (question.correct=="C"){
+                    goodDomAnswer = answer_c;
+                }
+                else {
+                    goodDomAnswer = answer_d;
+                }
 
-                  // IF CORRECT ANSWER IS B----------------------------------------------
-
-                  else if (question.correct=="B"){
-                    answer_b.style.color='#55a630';
-                    answer_b.style.fontWeight = "bold";
-                    let img = document.createElement('img');
-                    img.src = "../../images/correct.jpg";
-                    img.style.width = "8%";
-                    answer_b.appendChild(img);
-                  }
-
-                  // IF CORRECT ANSWER IS C-----------------------------------------------
-
-                  else if (question.correct=="C"){
-                    answer_c.style.color='#55a630';
-                    answer_c.style.fontWeight = "bold";
-                    answer_c.style.textDecoration = "bol"
-                    let img = document.createElement('img');
-                    img.src = "../../images/correct.jpg";
-                    img.style.width = "8%";
-                    answer_c.appendChild(img);
-                  }
-
-                  // IF CORRECT ANSWER IS D-----------------------------------------------
-                  
-                  else if (question.correct=="D"){
-                    answer_d.style.color='#55a630';
-                    answer_d.style.fontWeight = "bold";
-                    let img = document.createElement('img');
-                    img.src = "../../images/correct.jpg";
-                    img.style.width = "8%";
-                    answer_d.appendChild(img);
-                  }
+                goodDomAnswer.style.color='#55a630';
+                goodDomAnswer.style.fontWeight = "bold";
+                let img = document.createElement('img');
+                img.src = "../../images/correct.jpg";
+                img.style.width = "7%";
+                goodDomAnswer.appendChild(img);
 
                   // CHECK THE WRONG ANSWER =================================================
 
                   let index = corections.findIndex((correct)=>correct.id===question.id);
-
-                  // IF WRONG ANSER IS A =====================================================
-                  
+                  let badDomAnswer =null;
                   if (corections[index].choice==="A" && question.correct!=="A"){
-                     
-                      answer_a.style.color="red";
-                      let img = document.createElement('img');
-                      img.src = "../../images/wrong.jpg";
-                      img.style.width = "6%";
-                      answer_a.appendChild(img);
+                    badDomAnswer = answer_a;
                   }
-
-                  // IF WRONG ANSER IS B =====================================================
-
                   else if (corections[index].choice==="B" && question.correct!=="B"){
-                      
-                      answer_b.style.color="red";
-                      let img = document.createElement('img');
-                      img.src = "../../images/wrong.jpg";
-                      img.style.width = "6%";
-                      answer_b.appendChild(img);
+                    badDomAnswer = answer_b;
                   }
-
-                   // IF WRONG ANSER IS C =====================================================
-
                   else if (corections[index].choice==="C" && question.correct!=="C"){
-                      
-                      answer_c.style.color="red";
-                      let img = document.createElement('img');
-                      img.src = "../../images/wrong.jpg";
-                      img.style.width = "6%";
-                      answer_c.appendChild(img);
+                    badDomAnswer = answer_c;
                   }
-
-                  // IF WRONG ANSER IS D =====================================================
-
                   else if (corections[index].choice==="D" && question.correct!=="D"){
-                    
-                      answer_d.style.color="red";
-                      let img = document.createElement('img');
-                      img.src = "../../images/wrong.jpg";
-                      img.style.width = "6%";
-                      answer_d.appendChild(img);
+                    badDomAnswer = answer_d;
+                  }
+                  if(badDomAnswer !== null){
+                    badDomAnswer.style.color="red";
+                    let wrongimg = document.createElement('img');
+                    wrongimg.src = "../../images/wrong.jpg";
+                    img.style.width = "7%";
+                    badDomAnswer.appendChild(wrongimg);
                   }
                 // APEND ELEMENT TO THE DOM ===================================================
 
