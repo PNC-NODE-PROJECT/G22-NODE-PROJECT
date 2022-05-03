@@ -9,7 +9,7 @@ let questions = read_file(PATH);
 
 
 // FUNTIONS GET ALL QUESTIONS==================================================
-function GetAllQuestions() {
+function get_all_questions() {
     if (questions.length > 0){
         return questions;
     }
@@ -53,7 +53,7 @@ function create_Question(add_data) {
     return (questions);
 }
 // FUNTIONS UPDATE QUESTION ===================================================
-function Updat_Questions(id,body) {
+function updat_questions(id,body) {
     console.log(body);
     let index = questions.findIndex(questions => questions.id === id);
     questions[index].title =body.title;
@@ -73,11 +73,11 @@ function Updat_Questions(id,body) {
 
 
 // export all function ==========================================================
-module.exports.GetAllQuestions = GetAllQuestions;
+module.exports.get_all_questions = get_all_questions;
 module.exports.Get_One_Questions = Get_One_Questions;
 module.exports.delete_question = delete_question;
 module.exports.create_Question = create_Question;
-module.exports.Updat_Questions =  Updat_Questions;
+module.exports.updat_questions =  updat_questions;
 
 
 

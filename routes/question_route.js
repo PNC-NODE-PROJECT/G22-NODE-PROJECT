@@ -13,7 +13,7 @@ let model_question = require("../model/model.js");
 
 // get all questions ====================================================================
 router.get("/", (req, res) => {
-    res.send(model_question.GetAllQuestions())
+    res.send(model_question.get_all_questions())
 })
 // get one questions ====================================================================
 router.get("/:id", (req, res) => {
@@ -23,16 +23,22 @@ router.get("/:id", (req, res) => {
 // add questions to quize================================================================
 
 router.post('/', (req, res) => {
-    let new_question = {
-        id: uuidv4(),
-        title: req.body.title,
-        choiceA: req.body.choiceA,
-        choiceB: req.body.choiceB,
-        choiceC: req.body.choiceC,
-        choiceD: req.body.choiceD,
-        correct: req.body.correct,
+    if(req.body.title !== "" && req.body.choiceA !== "" && req.body.choiceB !== "" && req.body.choiceC !== "" && req.body.choiceD !== ""){
+        let new_question = {
+            id: uuidv4(),
+            title: req.body.title,
+            choiceA: req.body.choiceA,
+            choiceB: req.body.choiceB,
+            choiceC: req.body.choiceC,
+            choiceD: req.body.choiceD,
+            correct: req.body.correct,
+        }
+       model_question.create_Question(new_question)
+       res.send("add success")
     }
-    res.send(model_question.create_Question(new_question));
+    else{
+        res.send("can not add question !")
+    }
 })
 
 // delete questions=====================================================================
@@ -54,7 +60,13 @@ router.delete('/:id', (req, res) => {
 router.put('/:id', (req, res) => {
     let id = req.params.id;
     let mybody = req.body;
-    res.send(model_question.Updat_Questions(id, mybody));
+    if(req.body.title !== "" && req.body.choiceA !== "" && req.body.choiceB !== "" && req.body.choiceC !== "" && req.body.choiceD !== "") {
+        model_question.updat_questions(id, mybody)
+        res.send("update success");
+    }
+    else {
+        res.send("update error");
+    }
 })
 
 
