@@ -9,15 +9,10 @@
     padding: 0;
     height: 90vh;
     font-family: sans-serif;
-    /* background-image: url(../images/background.jpg);
-    background-repeat: no-repeat;
-    background-attachment: fixed; 
-     background-size:100%;  */
+  
     background: #b6b6b6 !important;
 }
-/* .container{
-  border-top:5px solid #5c4d7d;
-} */
+
 .main-contain{
   width: 50%;
   margin: auto;
@@ -95,16 +90,9 @@
 }
 .nav .btn{
   text-decoration: underline;
+  font-weight: bold;
+  font-size: 15px;
 }
-
-.choice{
-   height: 50%;
-    
-}
-.card{
-  height: 100%;
-}
-
 .card, .question{
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;  
 }
@@ -176,7 +164,10 @@
     outline: none;
     border-color: var(--main-color-light);
   }
-
+#choiceA,#choiceB,#choiceC,#choiceD,.corect{
+  margin-top: 5px;
+}
+/* --------------- PLAY VIEW    --------------------- ---------------   */
 
   #play-view {
   /* background-color: var(--main-color-light); */
@@ -256,46 +247,6 @@
   color: #fff;
 
 }
-/* --------------- PLAY VIEW    --------------------- ---------------   */
-
-#play-view {
-  /* background-color: var(--main-color-light); */
-
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-}
-
-#start {
-  background-color: rgba(255, 255, 255, 0.696);
-  border-radius: 20px;
-  padding: 20px;
-  font-size: 300%;
-  cursor: pointer;
-}
-
-#quiz {
-  width: 50%;
-  max-width: 80%;
-  background-color:rgba(255, 255, 255, 0.696);
-  border-radius: 20px;
-  padding: 10px;
-}
-
-#score {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#question {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 .main-card{
   width: 40%;
@@ -303,7 +254,7 @@
   background: rgba(255, 255, 255, 0.696);
   border-radius: 10px;
   display: none;
-  border-top: 5px solid #5c4d7d ;
+  
 }
 .result{
   text-align: center;
@@ -324,3 +275,10 @@
   border-radius: 5px;
   margin-top: 15px;
 }
+.footer{
+  width: 100%;
+  text-align: center;
+  background-color: red;
+  padding: 15px;
+}
+

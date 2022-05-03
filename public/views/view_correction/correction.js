@@ -102,10 +102,10 @@ function refrest_Dom(){
                   else if (corections[index].choice==="C" && question.correct!=="C"){
                     badDomAnswer = answer_c;
                   }
-                  else if (corections[index].choice==="D" && question.correct!=="D") {
+                  else if (corections[index].choice==="D" && question.correct!=="D"){
                     badDomAnswer = answer_d;
                   }
-                  if(badDomAnswer !== null ){
+                  if(badDomAnswer !== null){
                     badDomAnswer.style.color="red";
                     let wrongimg = document.createElement('img');
                     wrongimg.src = "../../images/wrong.jpg";

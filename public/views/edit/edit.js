@@ -115,6 +115,15 @@ function refrest_Dom(){
         }
     })
 }
+// funtion erorr===================================================
+function error(element){
+    element.style.border = 1 + "px solid red";
+}
+
+// funtion completed =============================================
+function completed(element){
+    element.style.border = 1 + "px solid black";
+}
 
 // function show =======================================================
 
@@ -166,7 +175,18 @@ let edit_mode = "CREATE" // CREATE or EDIT
 // FUNCTION TO CONCELL ADD AN EDIT==================================
 
 function onCancel(){
-   hide( dom_dialog );
+    document.querySelector("#title").value='';
+    document.querySelector("#choiceA").value = '';
+    document.querySelector("#choiceB").value = '';
+    document.querySelector("#choiceC").value = '';
+    document.querySelector("#choiceD").value = '';
+    hide( dom_dialog );
+    hide(message_dialog);
+    completed(title);
+    completed(choiceA);
+    completed(choiceB);
+    completed(choiceC);
+    completed(choiceD);
 }
 
 // FUNCTION TO GET ELEMENT TO THE DOM =================================
@@ -197,17 +217,63 @@ function onCreate(){
         let choiceC = document.getElementById('choiceC');
         let choiceD = document.getElementById('choiceD');
         let corect_answer = document.querySelector('.corect');
-        let new_question = {
-            title: title.value,
-            choiceA: choiceA.value,
-            choiceB: choiceB.value,
-            choiceC: choiceC.value,
-            choiceD: choiceD.value,
-            correct: corect_answer.value
+        if(title.value !== "" && choiceA.value !=="" && choiceB.value !== "" && choiceC.value !== "" && choiceD.value !== ""){
+            let new_question = {
+                title: title.value,
+                choiceA: choiceA.value,
+                choiceB: choiceB.value,
+                choiceC: choiceC.value,
+                choiceD: choiceD.value,
+                correct: corect_answer.value
+            }
+            axios.post( "/questions", new_question);
+            refrest_Dom();
+            hide(dom_dialog);
+            hide(message_dialog)
+            completed(title);
+            completed(choiceA);
+            completed(choiceB);
+            completed(choiceC);
+            completed(choiceD);
+        }else{
+            if(title.value == ""){
+                error(title);
+            }else{
+                completed(title);
+            }
+            if(choiceA.value == ""){
+
+                error(choiceA);
+            }else{
+
+                completed(choiceA);
+            }
+            if(choiceB.value == ""){
+
+                error(choiceB);
+            }else{
+
+                completed(choiceB);
+            }
+            if(choiceC.value == ""){
+
+                error(choiceC);
+            }else{
+
+                completed(choiceC);
+                
+            }
+            if(choiceD.value == ""){
+
+                error(choiceD);
+            }else{
+
+                completed(choiceD);
+            }
+            if(title.value == "" || choiceA.value == "" || choiceB.value == "" || choiceC.value == "" || choiceD.value == ""){
+                show(message_dialog);
+            }
         }
-        axios.post( "/questions", new_question);
-        refrest_Dom();
-        hide(dom_dialog);
     }
     // TO EDIT QUESTION===================================================
     else{
@@ -233,6 +299,7 @@ function onCreate(){
 let id = null;
 // Dialog dom======================================================
 let dom_dialog = document.getElementById("questions-dialog");
+let message_dialog = document.getElementById("message-dialog");
 // -----------------------main code ------------------------------
  
 refrest_Dom();
