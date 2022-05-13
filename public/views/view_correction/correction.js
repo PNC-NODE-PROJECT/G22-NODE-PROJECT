@@ -1,10 +1,10 @@
-let myURL = "http://localhost";
+
 
 // FUNCTION REFREST DOM ===========================================================
 
 function refrest_Dom(){  
   let container = document.querySelector('.container');
-  axios.get(myURL+ "/questions").then(function(respont){
+  axios.get("/questions").then(function(respont){
         let corections=JSON.parse(localStorage.getItem("corections"));
         console.log(corections);
         let questions = respont.data;

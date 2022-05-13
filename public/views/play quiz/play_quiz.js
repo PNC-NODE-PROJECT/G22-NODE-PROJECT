@@ -34,7 +34,7 @@ dom_start.addEventListener("click", (event) => {
 
 
 function renderQuestion() {
-  axios.get("http://localhost/questions").then(function(response) {
+  axios.get("/questions").then(function(response) {
     let questions=response.data;
       if (currentQuestionIndex<=questions.length-1) {
         let question = questions[currentQuestionIndex];
@@ -48,7 +48,7 @@ function renderQuestion() {
 }
 
 function checkAnswer(choice) {
-  axios.get("http://localhost/questions").then(function(response) {
+  axios.get("/questions").then(function(response) {
     var questions=response.data;
     corections.push({id: questions[currentQuestionIndex].id,choice:choice});
     localStorage.setItem("corections",JSON.stringify(corections));
